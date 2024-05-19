@@ -1,0 +1,334 @@
+/* Estilos globais */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff; /* Cor de fundo geral */
+}
+
+nav.menulateral{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 100%;
+    background-color: #1d61bf;
+    padding: 40px 0 40px 1%;
+    box-shadow: 3px 0 0 #0b264c;
+    z-index: 999;
+    overflow: hidden;
+    transition: .3s;
+}
+
+nav.menulateral:hover{
+    width: 250px;
+}
+
+.expandir{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: -18px;
+
+}
+
+.expandir > i{
+    color: #fff;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+ul{
+    height: 100%;
+    list-style: none;
+
+}
+
+ul li.itens{
+    transition: .5s;
+}
+
+ul li.itens:hover{
+    margin-left: -70px;
+    padding-left: 90px;
+    background-color: #0b264c;
+}
+
+ul li.itens a{
+    margin-left: -35px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 20px 4%;
+    display: flex;
+    margin-bottom: 15px;
+    line-height: 40px;
+
+}
+
+ul li.itens a .txtlink{
+    margin-left: 30px;
+}
+
+ul li.itens a .icon > i{
+    font-size: 30px;
+}
+
+.search-box {
+    margin-top: 110px;
+    width: 300px;
+    position: absolute ;
+    background-color: #e5e5e5; /* Cor de fundo da barra de pesquisa */
+    border-radius: 15px;
+    overflow: hidden; /* Para esconder bordas arredondadas da input dentro da barra */
+    margin-left: 1130px;
+    margin-bottom: 0px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    background-color: #e5e5e5; /* Cor de fundo da barra de pesquisa */
+    color: #fff;
+}
+
+.logosite {
+    margin-top: 20px;
+    position: absolute;
+    align-items: center;
+    margin-left: 110px;
+    
+}
+
+.logosite img {
+    width: 180px;
+    height: 80px;
+    
+}
+
+.profile {
+    margin-top: 30px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    margin-left: 92%; /* Empurra para a direita */
+    
+}
+
+
+.profile img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.profile a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.profile a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+/* Conteúdo principal */
+.conteudo {
+    padding: 20px;
+    margin-left: 80px;
+    
+    
+}
+
+.sobre {
+    margin-top: 170px;
+    background-color: #ffffff;
+    padding: 20px;
+    text-align: center;
+}
+
+.imgInicial img {
+    margin-left: 20px;
+    width: 1300px; /* Altere o valor conforme necessário */
+    height: 350px; /* Mantenha a proporção ou ajuste conforme necessário */
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+
+
+/* Conteúdo principal1 */
+
+.content-wrapper {
+    margin-top: 10px;
+    margin-bottom: -90px;
+    margin-left: 80px;
+    padding: 20px;
+}
+
+.library-content {
+    background-color: #ffffff;
+    padding: 20px;
+}
+
+/* Alterações e adições para o carrossel de livros */
+.book-carousel {
+    position: relative;
+    background-color: #e5e5e5;
+    padding: 20px;
+}
+
+.book-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory; /* Permite que o scroll "pule" de um livro para o outro */
+}
+
+.book img {
+    width: 150px; /* Altere o valor conforme necessário */
+    height: 250px; /* Mantenha a proporção ou ajuste conforme necessário */
+    object-fit: cover;
+    border-radius: 15px;
+    
+}
+.book {
+    min-width: 200px; /* Largura mínima dos livros */
+    flex: 0 0 auto; /* Impede que os livros cresçam além do necessário */
+    scroll-snap-align: start; /* Define como os livros devem ser alinhados no scroll */
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column; /* Alinha o conteúdo verticalmente */
+    align-items: center; /* Centraliza os itens horizontalmente */
+}
+
+.carousel-navigation {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 98%;
+    display: flex;
+    justify-content: space-between;
+    z-index: 1;
+}
+
+.carousel-navigation button {
+    background-color: #1d61bf;
+    color: white;
+    border: none;
+    border-radius: 70%;
+    padding: 13px;
+    cursor: pointer;
+}
+
+.carousel-navigation button:hover {
+    background-color: #0b264c;
+}
+
+.prev {
+    left: 50px;
+}
+
+.next {
+    right: 50px;
+}
+
+.btn-emprestimo {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #1d61bf;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-emprestimo:hover {
+    background-color: #174a94;
+}
+
+
+
+/* Conteúdo principal2 */
+
+.conteudo2 {
+    margin-top: 200px; 
+    margin-bottom: -80px;
+    margin-left: 80px;
+}
+
+.opcoes {
+    background-color: #ffffff;
+    padding: 20px;
+}
+
+.opcoes1 {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+
+.btn-opcoes {
+    padding: 70px 80px;
+    background-color: #e5e5e5;
+    color: #1d61bf;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+
+
+
+
+/* Conteúdo principal3 */
+.conteudo3 {
+    margin-top: 180px;
+    margin-left: 80px;
+    padding: 20px;
+}
+
+.info{
+    background-color: #ffffff;
+    padding: 20px;
+}
+
+
+
+
+
+/* rodape do site */
+.rodape {
+    background-color: #1d61bf; 
+    height: 700px; 
+    width: 100%; 
+    position: absolute;
+    margin-top: 200px;
+}
+
+.logorodape {
+    margin-top: 20px;
+    position: absolute;
+    align-items: center;
+    margin-left: 110px;
+    
+}
+
+.logorodape img {
+    width: 180px;
+    height: 80px;
+}

@@ -1,0 +1,330 @@
+/* Estilos globais */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff; /* Cor de fundo geral */
+}
+
+nav.menulateral{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 100%;
+    background-color: #1d61bf;
+    padding: 40px 0 40px 1%;
+    box-shadow: 3px 0 0 #0b264c;
+    z-index: 999;
+    overflow: hidden;
+    transition: .3s;
+}
+
+nav.menulateral:hover{
+    width: 250px;
+}
+
+.expandir{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: -18px;
+
+}
+
+.expandir > i{
+    color: #fff;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+ul{
+    height: 100%;
+    list-style: none;
+
+}
+
+ul li.itens{
+    transition: .5s;
+}
+
+ul li.itens:hover{
+    margin-left: -70px;
+    padding-left: 90px;
+    background-color: #0b264c;
+}
+
+ul li.itens a{
+    margin-left: -35px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 20px 4%;
+    display: flex;
+    margin-bottom: 15px;
+    line-height: 40px;
+
+}
+
+ul li.itens a .txtlink{
+    margin-left: 30px;
+}
+
+ul li.itens a .icon > i{
+    font-size: 30px;
+}
+
+.search-box {
+    margin-top: 110px;
+    width: 300px;
+    position: absolute ;
+    background-color: #e5e5e5; /* Cor de fundo da barra de pesquisa */
+    border-radius: 15px;
+    overflow: hidden; /* Para esconder bordas arredondadas da input dentro da barra */
+    margin-left: 1130px;
+    margin-bottom: 0px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    background-color: #e5e5e5; /* Cor de fundo da barra de pesquisa */
+    color: #fff;
+}
+
+.logosite {
+    margin-top: 20px;
+    position: absolute;
+    align-items: center;
+    margin-left: 110px;
+    
+}
+
+.logosite img {
+    width: 180px;
+    height: 80px;
+    
+}
+
+.profile {
+    margin-top: 30px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    margin-left: 92%; /* Empurra para a direita */
+    
+}
+
+
+.profile img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.profile a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.profile a:hover {
+    text-decoration: underline;
+}
+
+
+
+/* Conteúdo principal */
+
+.conteudo {
+    padding: 20px;
+    margin-left: 80px;
+    margin-bottom: -40px;
+}
+
+.titulo {
+    margin-top: 170px;
+    background-color: #ffffff;
+    padding: 20px;
+    text-align: center;
+}
+
+
+
+/* barra de livros */
+.content-wrapper {
+    margin-top: 10px;
+    margin-bottom: -90px;
+    margin-left: 80px;
+    padding: 20px;
+}
+
+.library-content {
+    background-color: #ffffff;
+    padding: 20px;
+}
+
+/* alterações e adições para o carrossel de livros */
+.book-carousel {
+    position: relative;
+    background-color: #e5e5e5;
+    padding: 20px;
+}
+
+.book-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory; /* Permite que o scroll "pule" de um livro para o outro */
+}
+
+.book img {
+    width: 150px; 
+    height: 250px; 
+    object-fit: cover;
+    border-radius: 15px;
+    
+}
+.book-link {
+    min-width: 200px;
+    scroll-snap-align: start; /* Define como os livros devem ser alinhados no scroll */
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column; /* alinha o conteudo verticalmente */
+    align-items: center; /* centraliza os itens horizontalmente */
+}
+
+.carousel-navigation {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 98%;
+    display: flex;
+    justify-content: space-between;
+    z-index: 1;
+}
+
+.carousel-navigation button {
+    background-color: #1d61bf;
+    color: white;
+    border: none;
+    border-radius: 70%;
+    padding: 13px;
+    cursor: pointer;
+}
+
+.carousel-navigation button:hover {
+    background-color: #0b264c;
+}
+
+.prev {
+    left: 50px;
+}
+
+.next {
+    right: 50px;
+}
+
+.btn-emprestimo1 {
+    margin-left: 65px;
+    padding: 5px 10px;
+    background-color: #1d61bf;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-emprestimo1:hover {
+    background-color: #174a94;
+}
+
+.btn-emprestimo {
+    padding: 5px 10px;
+    background-color: #1d61bf;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-emprestimo:hover {
+    background-color: #174a94;
+}
+
+
+
+
+/*conteudo 1*/
+.conteudo1 {
+    padding: 20px;
+    margin-left: 80px;
+    margin-bottom: -40px;
+    
+}
+.titulo1 {
+    margin-top: 70px;
+    background-color: #ffffff;
+    padding: 20px;
+}
+
+.todos-os-livros {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.todos-os-livros .book {
+    width: 18%;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.book.hidden {
+    display: none;
+}
+
+.botaoMostrar {
+    display: block;
+    margin: 60px auto;
+    padding: 10px 200px;
+    background-color: #1d61bf;
+    border-radius: 15px;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.botaoMostrar:hover {
+    background-color: #1551a3;
+}
+
+
+
+
+/* rodape do site */
+.rodape {
+    background-color: #1d61bf; 
+    height: 700px; 
+    width: 100%; 
+    position: absolute;
+    margin-top: 200px;
+}
+
+.logorodape {
+    margin-top: 20px;
+    position: absolute;
+    align-items: center;
+    margin-left: 110px;
+    
+}
+
+.logorodape img {
+    width: 180px;
+    height: 80px;
+}
+
