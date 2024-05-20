@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes do Livro</title>
+    <link rel="stylesheet" href="assetsPagLivro/styleLivros.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        .book-details {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .book-details img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        <div class="profile">
+            <img src="person-circle.svg" alt="Ícone de Perfil">
+            <a href="#"style="color: #1d61bf"; >Perfil</a>
+        </div>
+        <div class="search-box">
+            <input type="text" placeholder="Pesquisar...">
+        </div>
+        <div class="logosite">
+            <a href="../PaginaInicial/pagInicial.html">
+                <img src="imgPagLivros/logo.jpg" alt="logo do site">
+            </a>
+        </div>
+    </div>
+
+
+    <div class="book-details">
+        <h2 id="book-title">Detalhes do Livro</h2>
+        <img id="book-image" src="" alt="Imagem do Livro">
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Obtém os parâmetros da URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const bookId = urlParams.get('id');
+            const bookImg = urlParams.get('img');
+            const bookTitle = urlParams.get('title');
+
+            // Define a imagem e o título do livro
+            if (bookImg) {
+                document.getElementById('book-image').src = bookImg;
+            }
+            if (bookTitle) {
+                document.getElementById('book-title').innerText = bookTitle;
+            }
+        });
+    </script>
+</body>
+</html>
