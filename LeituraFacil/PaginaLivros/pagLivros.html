@@ -10,6 +10,7 @@
 </head>
 <body>
     
+
     <div>
         <div class="profile">
             <img src="person-circle.svg" alt="Ícone de Perfil">
@@ -61,40 +62,25 @@
    
     <!-- SCRIPTS  -->   
 
-    <script> //redirecionar para a pagina de detales de livro
+    <script> //redirecionar para a pagina de detalhes de livro
         $(document).ready(function(){
             $(".book-link").click(function(e){
                 e.preventDefault(); // Impede que o link redirecione imediatamente
                 
                 var bookId = $(this).data('id'); //obtem o ID do livro no qual o usuario clicou
-                
-                //envia uma solicitação AJAX para o PHP
-                $.ajax({
-                    url: 'selectLivro.php',
-                    type: 'POST',
-                    data: { bookId: bookId },
-                    success: function(response) {
-                        //resposta do servidor
-                        console.log(response);
-                        $(document).ready(function(){
-                            $(".book-link").click(function(e){
-                                
-                                var bookId = $(this).data('id');
-                                var bookImg = $(this).data('img');
-                                var bookTitle = $(this).data('title');
-                                
-                                // Redireciona para a nova página com os parâmetros na URL
-                                window.location.href = `detalhesLivro.html?id=${bookId}&img=${encodeURIComponent(bookImg)}&title=${encodeURIComponent(bookTitle)}`;
-                            });
-                        });
-
-                        
-                    },
-                    error: function(xhr, status, error) {
-                        // erros de solicitaçãi
-                        console.error(error);
-                    }
+                $(document).ready(function(){
+                $(".book-link").click(function(e){
+                                    
+                var bookId = $(this).data('id');
+                var bookImg = $(this).data('img');
+                var bookTitle = $(this).data('title');
+                                    
+                // Redireciona para a nova página com os parâmetros na URL
+                window.location.href = `detalhesLivro.html?id=${bookId}&img=${encodeURIComponent(bookImg)}&title=${encodeURIComponent(bookTitle)}`;
+                    });
                 });
+
+                  
             });
         });
     </script>
@@ -155,6 +141,9 @@
     </script>
 
 
+
+
+
     <!-- conteudo -->
 
     <div class = conteudo>
@@ -163,49 +152,49 @@
         </div>
     </div>
 
-
+ 
     <div class="content-wrapper">
         <div class="library-content">
             <h2 style="color: #1d61bf;">Sugestões de Obras</h2>
             <div class="book-carousel">
                 <div class="book-container">
                     <div class="book">
-                        <a href="#" class="book-link" data-id="55555" data-img="imgLivros/jujutsu1.jpg"> 
+                        <a href="#" class="book-link" data-id="55555" data-img="imgLivros/jujutsu1.jpg" data-title="Jujutsu Kaisen - Cap 1"> 
                             <img src="imgLivros/jujutsu1.jpg" alt="">
                             <h4>Jujutsu Kaisen - Cap 1</h4>
                         </a>    
                         <button class="btn-emprestimo1">Empréstimo</button>
                     </div>
                     <div class="book">
-                        <a href="#" class="book-link" data-id="2" data-img="imgLivros/ouran.jpg"> 
+                        <a href="#" class="book-link" data-id="121212" data-img="imgLivros/ouran.jpg" data-title="Ouran Host Club"> 
                             <img src="imgLivros/ouran.jpg" alt="">
                             <h4>Ouran Host Club</h4>
                         </a>    
                         <button class="btn-emprestimo1">Empréstimo</button>
                     </div>
                     <div class="book">
-                        <a href="#" class="book-link" data-id="3" data-img="imgLivros/five.jpg"> 
+                        <a href="#" class="book-link" data-id="3" data-img="imgLivros/five.jpg" data-title="Five Nights at Freddy’s"> 
                             <img src="imgLivros/five.jpg" alt="">
                             <h4>Five Nights at Freddy’s</h4>
                         </a>
                         <button class="btn-emprestimo1">Empréstimo</button>
                     </div>
                     <div class="book">
-                        <a href="#" class="book-link" data-id="4" data-img="imgLivros/IT.jpeg"> 
+                        <a href="#" class="book-link" data-id="4" data-img="imgLivros/IT.jpeg" data-title="IT-A Coisa"> 
                             <img src="imgLivros/IT.jpeg" alt="">
                             <h4>IT-A Coisa</h4>
                         </a>
                         <button class="btn-emprestimo1">Empréstimo</button>
                     </div>
                     <div class="book">
-                        <a href="#" class="book-link" data-id="5" data-img="imgLivros/jojo4.jpg"> 
+                        <a href="#" class="book-link" data-id="5" data-img="imgLivros/jojo4.jpg" data-title="Jojo Parte 4"> 
                             <img src="imgLivros/jojo4.jpg" alt="">
                             <h4>Jojo Parte 4</h4>
                         </a>
                         <button class="btn-emprestimo1">Empréstimo</button>
                     </div>
                     <div class="book">
-                        <a href="#" class="book-link" data-id="6" data-img="imgLivros/jojo5.jpg"> 
+                        <a href="#" class="book-link" data-id="6" data-img="imgLivros/jojo5.jpg" data-title="Jojo Parte 5"> 
                             <img src="imgLivros/jojo5.jpg" alt="">
                             <h4>Jojo Parte 5</h4>
                         </a>
@@ -220,49 +209,49 @@
         </div>
     </div>
     
-
+    
     <div class="content-wrapper">
         <div class="library-content">
             <h2 style="color: #1d61bf;">Sugestões de Obras</h2>
             <div class="book-carousel">
                 <div class="book-container">
                     <div class="book">
-                        <a href="../PaginaInicial/pagInicial.html" class="book-link" data-id="1"> 
+                        <a href="../PaginaInicial/pagInicial.html" class="book-link" data-id="121212" data-img="imgLivros/jujutsu1.jpg" data-title="Jujutsu Kaisen - Cap 1"> 
                             <img src="imgLivros/jujutsu1.jpg" alt="">
                             <h4>Jujutsu Kaisen - Cap 1</h4>
                         </a>    
                         <button class="btn-emprestimo1">Empréstimo</button>
                     </div>
                     <div class="book">
-                        <a href="#" class="book-link" data-id="2"> 
+                        <a href="#" class="book-link" data-id="2" data-img="imgLivros/ouran.jpg" data-title="Ouran Host Club"> 
                             <img src="imgLivros/ouran.jpg" alt="">
                             <h4>Ouran Host Club</h4>
                         </a>    
                         <button class="btn-emprestimo1">Empréstimo</button>
                     </div>
                     <div class="book">
-                        <a href="#" class="book-link" data-id="3"> 
+                        <a href="#" class="book-link" data-id="3" data-img="imgLivros/five.jpg" data-title="Five Nights at Freddy’s"> 
                             <img src="imgLivros/five.jpg" alt="">
                             <h4>Five Nights at Freddy’s</h4>
                         </a>
                         <button class="btn-emprestimo1">Empréstimo</button>
                     </div>
                     <div class="book">
-                        <a href="#" class="book-link" data-id="4"> 
+                        <a href="#" class="book-link" data-id="4" data-img="imgLivros/IT.jpeg" data-title="IT-A Coisa"> 
                             <img src="imgLivros/IT.jpeg" alt="">
                             <h4>IT-A Coisa</h4>
                         </a>
                         <button class="btn-emprestimo1">Empréstimo</button>
                     </div>
                     <div class="book">
-                        <a href="#" class="book-link" data-id="5"> 
+                        <a href="#" class="book-link" data-id="5" data-img="imgLivros/jojo4.jpg" data-title="Jojo Parte 4"> 
                             <img src="imgLivros/jojo4.jpg" alt="">
                             <h4>Jojo Parte 4</h4>
                         </a>
                         <button class="btn-emprestimo1">Empréstimo</button>
                     </div>
                     <div class="book">
-                        <a href="#" class="book-link" data-id="6"> 
+                        <a href="#" class="book-link" data-id="6" data-img="imgLivros/jojo5.jpg" data-title="Jojo Parte 5"> 
                             <img src="imgLivros/jojo5.jpg" alt="">
                             <h4>Jojo Parte 5</h4>
                         </a>
@@ -276,8 +265,8 @@
             </div>
         </div>
     </div>
-        
-
+    
+    
     <div class = conteudo1>
         <div class = titulo1>
             <h2 style="color: #1d61bf";>Todos os livros</h2>
