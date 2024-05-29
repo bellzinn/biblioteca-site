@@ -1,89 +1,89 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Detalhes do Livro</title>
-    <link rel="stylesheet" href="assetsPagLivro/styleLivros.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <style>
-        .book-details {
-            text-align: center;
-            margin-top: 50px;
-        }
-        .book-details img {
-            margin-top: 20px;
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
+	<meta charset="UTF-8">
+	<title>Detalhes do Livro</title>
+	<link rel="stylesheet" href="assetsPagLivro/styleLivros.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+	<style>
+		.book-details {
+			text-align: center;
+			margin-top: 50px;
+		}
+		.book-details img {
+			margin-top: 20px;
+			max-width: 100%;
+			height: auto;
+		}
+	</style>
 </head>
 <body>
 
-    <div>
-        <div class="profile">
-            <img src="person-circle.svg" alt="Ícone de Perfil">
-            <a href="#" style="color: #1d61bf;">Perfil</a>
-        </div>
-        <div class="search-box">
-            <input type="text" placeholder="Pesquisar...">
-        </div>
-        <div class="logosite">
-            <a href="../PaginaInicial/pagInicial.html">
-                <img src="imgPagLivros/logo.jpg" alt="logo do site">
-            </a>
-        </div>
-    </div>
+	<div>
+		<div class="profile">
+			<img src="person-circle.svg" alt="Ícone de Perfil">
+			<a href="#" style="color: #1d61bf;">Perfil</a>
+		</div>
+		<div class="search-box">
+			<input type="text" placeholder="Pesquisar...">
+		</div>
+		<div class="logosite">
+			<a href="../PaginaInicial/pagInicial.html">
+				<img src="imgPagLivros/logo.jpg" alt="logo do site">
+			</a>
+		</div>
+	</div>
 
-    <div class="book-details">
-        <h2 id="book-title">Detalhes do Livro</h2>
-        <img id="book-image" src="" alt="Imagem do Livro">
-        <div id="result"></div>
-    </div>
+	<div class="book-details">
+		<h2 id="book-title">Detalhes do Livro</h2>
+		<img id="book-image" src="" alt="Imagem do Livro">
+		<div id="result"></div>
+	</div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Obtém os parâmetros da URL
-            const urlParams = new URLSearchParams(window.location.search);
-            const bookId = urlParams.get('id');
-            const bookImg = urlParams.get('img');
-            const bookTitle = urlParams.get('title');
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			// Obtém os parâmetros da URL
+			const urlParams = new URLSearchParams(window.location.search);
+			const bookId = urlParams.get('id');
+			const bookImg = urlParams.get('img');
+			const bookTitle = urlParams.get('title');
 
-            // Define a imagem e o título do livro
-            if (bookImg) {
-                document.getElementById('book-image').src = decodeURIComponent(bookImg);
-            }
-            if (bookTitle) {
-                document.getElementById('book-title').innerText = decodeURIComponent(bookTitle);
-            }
+			// Define a imagem e o título do livro
+			if (bookImg) {
+				document.getElementById('book-image').src = decodeURIComponent(bookImg);
+			}
+			if (bookTitle) {
+				document.getElementById('book-title').innerText = decodeURIComponent(bookTitle);
+			}
 
-            // Faz uma solicitação ao PHP para obter os detalhes do livro
-            fetch('selectLivro.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: `bookId=${bookId}`
-            })
-            .then(response => response.json())
-            .then(data => {
-                const resultDiv = document.getElementById('result');
-                if (data.error) {
-                    resultDiv.innerHTML = `<p style="color: red;">${data.error}</p>`;
-                } else {
-                    resultDiv.innerHTML = `
-                        <p><strong>ID:</strong> ${data.idlivro}</p>
-                        <p><strong>Autor:</strong> ${data.autor}</p>
-                        <p><strong>Gênero:</strong> ${data.genero}</p>
-                        <p><strong>Idioma:</strong> ${data.idioma}</p>
-                        <p><strong>Editora:</strong> ${data.editora}</p>
-                        <p><strong>Situação:</strong> ${data.situacao}</p>
-                    `;
-                }
-            })
-            .catch(error => {
-                document.getElementById('result').innerHTML = `<p style="color: red;">Erro ao buscar os detalhes do livro.</p>`;
-            });
-        });
-    </script>
+			// Faz uma solicitação ao PHP para obter os detalhes do livro
+			fetch('selectLivro.php', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded',
+				},
+				body: `bookId=${bookId}`
+			})
+			.then(response => response.json())
+			.then(data => {
+				const resultDiv = document.getElementById('result');
+				if (data.error) {
+					resultDiv.innerHTML = `<p style="color: red;">${data.error}</p>`;
+				} else {
+					resultDiv.innerHTML = `
+						<p><strong>ID:</strong> ${data.idlivro}</p>
+						<p><strong>Autor:</strong> ${data.autor}</p>
+						<p><strong>Gênero:</strong> ${data.genero}</p>
+						<p><strong>Idioma:</strong> ${data.idioma}</p>
+						<p><strong>Editora:</strong> ${data.editora}</p>
+						<p><strong>Situação:</strong> ${data.situacao}</p>
+					`;
+				}
+			})
+			.catch(error => {
+				document.getElementById('result').innerHTML = `<p style="color: red;">Erro ao buscar os detalhes do livro.</p>`;
+			});
+		});
+	</script>
 </body>
 </html>

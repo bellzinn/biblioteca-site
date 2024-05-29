@@ -1,47 +1,35 @@
 <?php
-
-$host = 'localhost';
-$dbname = 'biblioteca';
-$username = 'root';
-$password = '4733105';
-
-
-$conn = new mysqli($host, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Erro de conexão com o banco de dados: " . $conn->connect_error);
-}
+require_once '../config.php';
 
 // Verifica se o formulário foi submetido
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Obtém os valores dos campos do formulário
-    $email = $_POST['email'];
-    $senha = $_POST['senha'];
-
+	// Obtém os valores dos campos do formulário
+	$email = $_POST['email'];
+	$senha = $_POST['senha'];
    
-    $sql = "SELECT * FROM usuario WHERE email = '$email' AND senha = '$senha'";
-    $result = $conn->query($sql);
+	$sql = "
+		select
+			*
+		from
+			usuario
+		where
+			email = '$email' and
+			senha = '$senha'";
 
-    // Verifica se a consulta retornou algum resultado
-if ($result->num_rows > 0) {
-    // obtem os dados do usuario
-    $usuario = $result->fetch_assoc();
+	$result = $conn->query($sql);
 
-    // verificação do tipo de usuarip
-    if ($usuario['isAdmin'] == 1) {
-        // se for admin
-        //header("Location: http://localhost/LeituraFacil/PaginaInicial/pagInicialAdmin.html"); 
-        header("Location: http://localhost/LeituraFacil/PaginaInicial/pagInicial.html"); 
-        exit();
-    } else {
-        // se for usuario normal
-        header("Location: http://localhost/LeituraFacil/PaginaInicial/pagInicial.html"); 
-        exit();
-    }
-} else {
-    // se não encontrou, exibe uma mensagem de erro
-    echo "Credenciais invalidas,tente novamente.";
- }
+	if ($result->num_rows > 0) {
+		$usuario = $result->fetch_assoc();
+
+		if ($usuario['isAdmin'] == 1) {
+			header("Location: http://".$_SERVER['HTTP_HOST']."/LeituraFacil/PaginaInicial/pagInicial.html");
+		} else {
+			header("Location: http://".$_SERVER['HTTP_HOST']."/LeituraFacil/PaginaInicial/pagInicial.html");
+		}
+		exit();
+	} else {
+		echo "Credenciais inválidas, tente novamente.";
+	}
 }
 
 $conn->close();
