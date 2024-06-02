@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	if ($result->num_rows > 0) {
 		$usuario = $result->fetch_assoc();
 
-		if ($usuario['isAdmin'] == 1) {
+		if ($usuario['admin'] == 1) {
 			header("Location: http://".$_SERVER['HTTP_HOST']."/LeituraFacil/PaginaInicial/pagInicial.html");
 		} else {
 			header("Location: http://".$_SERVER['HTTP_HOST']."/LeituraFacil/PaginaInicial/pagInicial.html");

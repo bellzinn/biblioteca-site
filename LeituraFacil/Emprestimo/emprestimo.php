@@ -5,30 +5,30 @@ $id_usuario = 1;
 $sql = "
 	insert into emprestimo (
 		id_usuario,
-		dataretirada,
-		devolucaoprevista
+		data_retirada,
+		devolucao_prevista
 	) values (
 		'$id_usuario',
 		curdate(),
 		curdate() + interval 30 day
 	)";
 
+$conn->query($sql);
+
 $id_emprestimo = $conn->insert_id;
-$id_livro = 55555;
+$id_livro = 1;
 $sql = "
-	insert into emprestimo_has_livro (
-		emprestimo_id_emprestimo,
-		livro_idlivro
+	insert into emprestimo_livros (
+		id_emprestimo,
+		id_livro
 	) values (
 		'$id_emprestimo',
 		'$id_livro'
 	)";
 
-if ($conn->query($sql) === TRUE) {
-	echo "Empréstimo realizado.";
-} else {
-	echo "SQL error: '$conn->error'";
-}
+$conn->query($sql);
+
+echo "Empréstimo realizado.";
 
 $conn->close();
 ?>
