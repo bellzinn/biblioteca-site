@@ -60,7 +60,7 @@ CREATE TABLE `emprestimo` (
   PRIMARY KEY (`id_emprestimo`),
   KEY `fk_id_user_idx` (`id_usuario`),
   CONSTRAINT `fk_id_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,6 +69,8 @@ CREATE TABLE `emprestimo` (
 
 LOCK TABLES `emprestimo` WRITE;
 /*!40000 ALTER TABLE `emprestimo` DISABLE KEYS */;
+INSERT INTO `emprestimo` VALUES
+(18,1,'2024-06-02',NULL,'2024-07-02',NULL,NULL);
 /*!40000 ALTER TABLE `emprestimo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -95,6 +97,8 @@ CREATE TABLE `emprestimo_livros` (
 
 LOCK TABLES `emprestimo_livros` WRITE;
 /*!40000 ALTER TABLE `emprestimo_livros` DISABLE KEYS */;
+INSERT INTO `emprestimo_livros` VALUES
+(18,1);
 /*!40000 ALTER TABLE `emprestimo_livros` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -180,4 +184,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-31 13:45:07
+-- Dump completed on 2024-06-02 16:52:25

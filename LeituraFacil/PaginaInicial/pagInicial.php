@@ -11,7 +11,6 @@
 </head>
 <body>
 
-
 	 <!-- topo -->
 	<div>
 		<div class="profile">
@@ -22,17 +21,14 @@
 			<input type="text" placeholder="Pesquisar...">
 		</div>
 		<div class="logosite">
-			<a href="pagInicial.html">
+			<a href="pagInicial.php">
 				<img src="logo.jpg" alt="logo do site">
 			</a>
 		</div>
 	</div>
-	   
-
-
 
 	<!-- scripts -->
-	
+
 	<script> //redirecionar para a pagina de detalhes de livro
 		$(document).ready(function(){
 			$(".book-link").click(function(e){
@@ -56,7 +52,6 @@
 		});
 	</script>
 
-
 	<script>
 		document.addEventListener('DOMContentLoaded', function () {
 			const prevButton = document.querySelector('.prev');
@@ -79,11 +74,7 @@
 		});
 	</script>
 
-
-
-
 	<!-- Conteúdo principal -->
-
 	<nav class = "menulateral">
 		<div class = "expandir">
 			<i class="bi bi-list"></i>
@@ -97,7 +88,7 @@
 				</a>
 			</li>
 			<li class = "itens">
-				<a href="../PaginaLivros/pagLivros.html">
+				<a href="../PaginaLivros/pagLivros.php">
 					<span class="icon"><i class="bi bi-book"></i></span>
 					<span class = txtlink>Acervo</span>
 				</a>
@@ -117,12 +108,11 @@
 
 		</ul>
 	</nav>
-
  
 	<div class="conteudo">
 		<div class="sobre">
 			<h1 style="color: #1d61bf";>Sobre nós</h1>
-			<p style="font-size: 18px;" >O sistema de gerenciamento de empréstimos de livros em Java é uma solução abrangente projetada para modernizar e 
+			<p style="font-size: 18px;" >O sistema de gerenciamento de empréstimos de livros é uma solução abrangente projetada para modernizar e 
 				otimizar as operações de bibliotecas,
 				 este sistema oferece uma gama de opções tanto para admins da biblioteca como também para os usuarios dela.</p>
 		</div>
@@ -132,55 +122,31 @@
 		</div>
 		 
 	</div>
-	
 
 	<div class="content-wrapper">
 		<div class="library-content">
 			<h2 style="color: #1d61bf;">Sugestões de Obras</h2>
 			<div class="book-carousel">
 				<div class="book-container">
-					<div class="book">
-						<a href="#" class="book-link" data-id="55555" data-img="imgLivros/jujutsu1.jpg" data-title="Jujutsu Kaisen - Cap 1">
-							<img src="imgLivros/jujutsu1.jpg" alt="">
-							<h4>Jujutsu Kaisen - Cap 1</h4>
-						</a>
-						<button class="btn-emprestimo">Empréstimo</button>
-					</div>
-					<div class="book">
-						<a href="#" class="book-link" data-id="121212" data-img="imgLivros/ouran.jpg" data-title="Ouran Host Club">
-							<img src="imgLivros/ouran.jpg" alt="">
-							<h4>Ouran Host Club</h4>
-						</a>
-						<button class="btn-emprestimo">Empréstimo</button>
-					</div>
-					<div class="book">
-						<a href="#" class="book-link" data-id="3" data-img="imgLivros/five.jpg" data-title="Five Nights at Freddy’s">
-							<img src="imgLivros/five.jpg" alt="">
-							<h4>Five Nights at Freddy’s</h4>
-						</a>
-						<button class="btn-emprestimo">Empréstimo</button>
-					</div>
-					<div class="book">
-						<a href="#" class="book-link" data-id="4" data-img="imgLivros/IT.jpeg" data-title="IT-A Coisa">
-							<img src="imgLivros/IT.jpeg" alt="">
-							<h4>IT-A Coisa</h4>
-						</a>
-						<button class="btn-emprestimo">Empréstimo</button>
-					</div>
-					<div class="book">
-						<a href="#" class="book-link" data-id="5" data-img="imgLivros/jojo4.jpg" data-title="Jojo Parte 4">
-							<img src="imgLivros/jojo4.jpg" alt="">
-							<h4>Jojo Parte 4</h4>
-						</a>
-						<button class="btn-emprestimo">Empréstimo</button>
-					</div>
-					<div class="book">
-						<a href="#" class="book-link" data-id="6" data-img="imgLivros/jojo5.jpg" data-title="Jojo Parte 5">
-							<img src="imgLivros/jojo5.jpg" alt="">
-							<h4>Jojo Parte 5</h4>
-						</a>
-						<button class="btn-emprestimo">Empréstimo</button>
-					</div>
+					<?php
+					require_once '../config.php';
+					$sql = "select * from livro";
+					$result = $conn->query($sql);
+					while ($row = mysqli_fetch_assoc($result)) {
+						$id = $row["id_livro"];
+						$titulo = $row["titulo"];
+						$imagem = "http://".$_SERVER['HTTP_HOST'].'/LeituraFacil/ImagensLivros/'.$row["imagem"];
+						echo <<<HTML
+						<div class="book">
+							<a href="#" class="book-link" data-id="$id" data-img="$imagem" data-title="$titulo">
+								<img src="$imagem" alt="">
+								<h4>$titulo</h4>
+							</a>
+							<button class="btn-emprestimo">Empréstimo</button>
+						</div>
+						HTML;
+					}
+					?>
 				</div>
 				<div class="carousel-navigation">
 					<button class="prev">&#10094;</button>
@@ -189,55 +155,31 @@
 			</div>
 		</div>
 	</div>
-
 
 	<div class="content-wrapper">
 		<div class="library-content">
 			<h2 style="color: #1d61bf;">Lançamentos</h2>
 			<div class="book-carousel">
 				<div class="book-container">
-					<div class="book">
-						<a href="#" class="book-link" data-id="7" data-img="imgLivros/coraline.jpeg" data-title="Coraline">
-							<img src="imgLivros/coraline.jpeg" alt="">
-							<h4>Coraline</h4>
-						</a>
-						<button class="btn-emprestimo">Empréstimo</button>
-					</div>
-					<div class="book">
-						<a href="#" class="book-link" data-id="8" data-img="imgLivros/kimi.jpg" data-title="De Mim Para Você">
-							<img src="imgLivros/kimi.jpg" alt="">
-							<h4>De Mim Para Você</h4>
-						</a>
-						<button class="btn-emprestimo">Empréstimo</button>
-					</div>
-					<div class="book">
-						<a href="#" class="book-link" data-id="9" data-img="imgLivros/jujutsu19.jpeg" data-title="Jujutsu Kaisen - Cap 19">
-							<img src="imgLivros/jujutsu19.jpeg" alt="">
-							<h4>Jujutsu Kaisen - Cap 19</h4>
-						</a>
-						<button class="btn-emprestimo">Empréstimo</button>
-					</div>
-					<div class="book">
-						<a href="#" class="book-link" data-id="10" data-img="imgLivros/evangelion.jpg" data-title="Neon Genesis Evangelion">
-							<img src="imgLivros/evangelion.jpg" alt="">
-							<h4>Neon Genesis Evangelion</h4>
-						</a>
-						<button class="btn-emprestimo">Empréstimo</button>
-					</div>
-					<div class="book">
-						<a href="#" class="book-link" data-id="11" data-img="imgLivros/berserk27.webp" data-title="Berserk - Cap 27">
-							<img src="imgLivros/berserk27.webp" alt="">
-							<h4>Berserk - Cap 27</h4>
-						</a>
-						<button class="btn-emprestimo">Empréstimo</button>
-					</div>
-					<div class="book">
-						<a href="#" class="book-link" data-id="12" data-img="imgLivros/five1.jpg" data-title="Fnaf – A Última Porta">
-							<img src="imgLivros/five1.jpg" alt="">
-							<h4>Fnaf – A Última Porta</h4>
-						</a>
-						<button class="btn-emprestimo">Empréstimo</button>
-					</div>
+					<?php
+					require_once '../config.php';
+					$sql = "select * from livro";
+					$result = $conn->query($sql);
+					while ($row = mysqli_fetch_assoc($result)) {
+						$id = $row["id_livro"];
+						$titulo = $row["titulo"];
+						$imagem = "http://".$_SERVER['HTTP_HOST'].'/LeituraFacil/ImagensLivros/'.$row["imagem"];
+						echo <<<HTML
+						<div class="book">
+							<a href="#" class="book-link" data-id="$id" data-img="$imagem" data-title="$titulo">
+								<img src="$imagem" alt="">
+								<h4>$titulo</h4>
+							</a>
+							<button class="btn-emprestimo">Empréstimo</button>
+						</div>
+						HTML;
+					}
+					?>
 				</div>
 				<div class="carousel-navigation">
 					<button class="prev">&#10094;</button>
@@ -246,7 +188,6 @@
 			</div>
 		</div>
 	</div>
-
 
 	<div class="conteudo2">
 		<div class="opçoes">
@@ -268,7 +209,6 @@
 		</div>
 	</div>
 
-
 	<div class="conteudo2">
 		<div class="opçoes">
 			<h2 style="color: #1d61bf; text-align: center; margin-bottom: 80px;";>Atendimento</h2>
@@ -289,11 +229,10 @@
 		</div>
 	</div>
 
-	
 	<div class="conteudo3">
 		<div class="info">
 			<h2 style="color: #1d61bf";>Informações</h2>
-			<p style="font-size: 18px; text-align: center;" >O sistema de gerenciamento de empréstimos de livros em Java é uma solução abrangente projetada para modernizar e otimizar as operações de bibliotecas,
+			<p style="font-size: 18px; text-align: center;" >O sistema de gerenciamento de empréstimos de livros é uma solução abrangente projetada para modernizar e otimizar as operações de bibliotecas,
 				 este sistema oferece uma gama de opções tanto para admins da biblioteca como também para os usuarios dela.</p>
 		</div>
 	</div>
@@ -307,6 +246,5 @@
 		<p style="font-size: 16px; text-align: left; margin-top: 20px;margin-left: 110px;" >blabldandndanadknkada.</p>
 		<p style="font-size: 16px; text-align: left; margin-top: 20px;margin-left: 110px;" >blabladnjndjkanjdnajkdna.</p>
 	</div>
-	
 </body>
 </html>

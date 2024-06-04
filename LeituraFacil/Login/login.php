@@ -22,9 +22,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$usuario = $result->fetch_assoc();
 
 		if ($usuario['admin'] == 1) {
-			header("Location: http://".$_SERVER['HTTP_HOST']."/LeituraFacil/PaginaInicial/pagInicial.html");
+			header("Location: http://".$_SERVER['HTTP_HOST']."/LeituraFacil/PaginaInicial/pagInicial.php");
 		} else {
-			header("Location: http://".$_SERVER['HTTP_HOST']."/LeituraFacil/PaginaInicial/pagInicial.html");
+			header("Location: http://".$_SERVER['HTTP_HOST']."/LeituraFacil/PaginaInicial/pagInicial.php");
 		}
 		exit();
 	} else {
