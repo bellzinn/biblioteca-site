@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$usuario = $result->fetch_assoc();
 
 		if ($usuario['admin'] == 1) {
-			header("Location: http://".$_SERVER['HTTP_HOST']."/LeituraFacil/PaginaInicial/pagInicial.php");
+			header("Location: http://".$_SERVER['HTTP_HOST']."/LeituraFacil/Paginas/PaginaADM/pagADM.html");
 		} else {
 			header("Location: http://".$_SERVER['HTTP_HOST']."/LeituraFacil/PaginaInicial/pagInicial.php");
 		}

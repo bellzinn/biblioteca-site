@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Aluno</title>
+    <link rel="stylesheet" href="assetsCadastroAluno/stylesCadastroAluno.css">
+</head>
+<body>
+
+    <!-- Barra -->
+    <div class="top-bar">
+        <div class="admin-links">
+            <a href="http://localhost/LeituraFacil/Paginas/CadastroAluno/CadastroAluno.html" class="active">Cadastrar Aluno</a>
+            <a href="http://localhost/LeituraFacil/Paginas/PesquisarAluno/PesquisarAluno.html" class="active">Pesquisar Aluno</a>
+            <a href="http://localhost/LeituraFacil/Paginas/PerfilADM/PerfilADM.html" class="active">Perfil do Administrador</a>
+        </div>
+        <div class="profile">
+            <img src="emoji-sunglasses-fill.svg" alt="Ícone de Admin">
+            <span>Área de Administração</span>
+        </div>
+    </div>
+
+
+
+    <!-- conteudo principal -->
+    <div class="content-wrapper">
+        <div class="admin-content">
+            <h1>Cadastrar Aluno</h1>
+            <form action="cadastrar_aluno.php" method="POST">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nome">Nome:</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefone">Telefone:</label>
+                        <input type="tel" id="telefone" name="telefone" required>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button type="submit" class="btn-cadastrar">Cadastrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+    <!-- rodape -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-left">
+                <img src="logo2.0c.jpg" alt="Logo da Página" class="footer-logo">
+                <div class="footer-links">
+                </div>
+            </div>
+            <div class="footer-center">
+                <p>Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>    
+</body>
+</html>
+

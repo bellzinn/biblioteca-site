@@ -10,207 +10,141 @@
 </head>
 <body>
 
-	<div>
-		<div class="profile">
-			<img src="person-circle.svg" alt="Ícone de Perfil">
-			<a href="#"style="color: #1d61bf"; >Perfil</a>
+	<header>
+		<div class="container">
+			<div class="logo">
+				<a href="../PaginaInicial/pagInicial.php">
+					<img src="logo2.0d.png" alt="logo do site">
+				</a>
+			</div>
+			<div class="search-box">
+				<input type="text" placeholder="O que você procura?">
+			</div>
+			<button id="contraste" class="btn-contraste">Alto Contraste</button>
 		</div>
-		<div class="search-box">
-			<input type="text" placeholder="Pesquisar...">
-		</div>
-		<div class="logosite">
-			<a href="../PaginaInicial/pagInicial.php">
-				<img src="imgPagLivros/logo.jpg" alt="logo do site">
-			</a>
-		</div>
-	</div>
+	</header>
 
-	<nav class = "menulateral">
-		<div class = "expandir">
+	<nav class="menulateral">
+		<div class="expandir">
 			<i class="bi bi-list"></i>
 		</div>
 
 		<ul>
-			<li class = "itens">
-				<a href="#">
+			<li class="itens">
+				<a href="http://localhost/LeituraFacil/PerfilUsuario/perfilusuario.html">
 					<span class="icon"><i class="bi bi-person-lines-fill"></i></span>
-					<span class = txtlink>Perfil</span>
+					<span class="txtlink">Perfil</span>
 				</a>
 			</li>
-			<li class = "itens">
-				<a href="pagLivros.php">
+			<li class="itens">
+				<a href="../PaginaLivros/pagLivros.php">
 					<span class="icon"><i class="bi bi-book"></i></span>
-					<span class = txtlink>Acervo</span>
+					<span class="txtlink">Acervo</span>
 				</a>
 			</li>
-			<li class = "itens">
+			<li class="itens">
 				<a href="#">
 					<span class="icon"><i class="bi bi-basket"></i></span>
-					<span class = txtlink>Historico</span>
-				</a>
-			</li>
-			<li class = "itens">
-				<a href="#">
-					<span class="icon"><i class="bi bi-basket"></i></span>
-					<span class = txtlink>Teste</span>
+					<span class="txtlink">Historico</span>
 				</a>
 			</li>
 		</ul>
 	</nav>
-   
-	<!-- scripts  -->   
 
-	<script> //redirecionar para a pagina de detalhes de livro
+	<!-- SCRIPTS  -->   
+
+	<script> 
 		$(document).ready(function(){
 			$(".book-link").click(function(e){
-				e.preventDefault(); // Impede que o link redirecione imediatamente
-				
-				var bookId = $(this).data('id'); //obtem o ID do livro no qual o usuario clicou
-				$(document).ready(function(){
-				$(".book-link").click(function(e){
-									
-				var bookId = $(this).data('id');
+				e.preventDefault(); 
+				var bookId = $(this).data('id'); 
 				var bookImg = $(this).data('img');
 				var bookTitle = $(this).data('title');
-									
-				// Redireciona para a nova página com os parâmetros na URL
 				window.location.href = `detalhesLivro.html?id=${bookId}&img=${encodeURIComponent(bookImg)}&title=${encodeURIComponent(bookTitle)}`;
-					});
-				});
-				  
 			});
 		});
-	</script>
 
-	<script> //script para deslocamento dos livros
-		document.addEventListener('DOMContentLoaded', function () {
-			const prevButton = document.querySelector('.prev');
-			const nextButton = document.querySelector('.next');
-			const bookContainer = document.querySelector('.book-container');
-	
-			prevButton.addEventListener('click', function () {
-				bookContainer.scrollBy({
-					left: -200, // deslocamento
-					behavior: 'smooth' // adiciona um efeito de deslocamento suave
-				});
-			});
-	
-			nextButton.addEventListener('click', function () {
-				bookContainer.scrollBy({
-					left: 200, // deslocamento
-					behavior: 'smooth' // adiciona um efeito de deslocamento suave
-				});
-			});
-		});
-	</script>
-
-	<script> //mostrar mais
-		document.addEventListener("DOMContentLoaded", function() {
-			const books = document.querySelectorAll('.todos-os-livros .book');
-			const showMoreButton = document.getElementById('show-more');
-			const booksToShow = 15; // Quantidade de livros a serem mostrados por clique
-		
-			let currentIndex = 0;
-		
-			function showMoreBooks() {
-				for (let i = 0; i < booksToShow; i++) {
-					if (currentIndex < books.length) {
-						books[currentIndex].classList.remove('hidden');
-						currentIndex++;
-					}
-				}
-				// Se todos os livros estiverem visíveis, esconda o botão
-				if (currentIndex >= books.length) {
-					showMoreButton.style.display = 'none';
-				}
+		document.addEventListener('DOMContentLoaded', function() {
+			if (localStorage.getItem('altoContraste') === 'true') {
+				document.body.classList.add('alto-contraste');
 			}
-		
-			// Inicialmente esconder todos os livros extras
-			books.forEach((book, index) => {
-				if (index >= booksToShow) {
-					book.classList.add('hidden');
-				}
+			document.getElementById('contraste').addEventListener('click', function() {
+				document.body.classList.toggle('alto-contraste');
+				localStorage.setItem('altoContraste', document.body.classList.contains('alto-contraste'));
 			});
-		
-			showMoreButton.addEventListener('click', showMoreBooks);
 		});
+
 	</script>
 
-	<!-- conteudo -->
-
-	<div class = conteudo>
-		<div class = titulo>
-			<h2 style="color: #1d61bf";>Acervo</h2>
-		</div>
-	</div>
-
+	<!-- Conteúdo -->
 	<div class="content-wrapper">
 		<div class="library-content">
-			<h2 style="color: #1d61bf;">Sugestões de Obras</h2>
-			<div class="book-carousel">
-				<div class="book-container">
+			<h2 style="color: #1d61bf;">Acervo</h2>
+			<!-- Sugestões de Livro -->
+			<div class="book-section">
+				<h3>Sugestões de Livro</h3>
+				<div class="book-container"> 
 					<?php
-					require_once '../config.php';
-					$sql = "select * from livro";
-					$result = $conn->query($sql);
-					while ($row = mysqli_fetch_assoc($result)) {
-						$id = $row["id_livro"];
-						$titulo = $row["titulo"];
-						$imagem = "http://".$_SERVER['HTTP_HOST'].'/LeituraFacil/ImagensLivros/'.$row["imagem"];
-						echo <<<HTML
-						<div class="book">
-							<a href="#" class="book-link" data-id="$id" data-img="$imagem" data-title="$titulo"> 
-								<img src="$imagem" alt="">
-								<h4>$titulo</h4>
-							</a>	
-							<button class="btn-emprestimo1">Empréstimo</button>
-						</div>
-						HTML;
-					}
+					require "../listaLivros.php";
+
+					listaLivros("select * from sugestoes");
 					?>
 				</div>
-				<div class="carousel-navigation">
-					<button class="prev">&#10094;</button>
-					<button class="next">&#10095;</button>
+			</div>
+			<!-- Lançamentos -->
+			<div class="book-section">
+				<h3>Lançamentos</h3>
+				<div class="book-container"> 
+					<?php
+					require "../listaLivros.php";
+
+					listaLivros("select * from lancamentos");
+					?>
+				</div>
+			</div>
+			<!-- Logica -->
+			<div class="book-section">
+				<h3>Logica Computacional</h3>
+				<div class="book-container"> 
+					<?php
+					require "../listaLivros.php";
+
+					listaLivros("select * from livro where genero = 'Lógica Computacional'");
+					?>
+				</div>
+			</div>
+			<!-- Psicologia -->
+			<div class="book-section">
+				<h3>Psicologia</h3>
+				<div class="book-container"> 
+					<?php
+					require "../listaLivros.php";
+
+					listaLivros("select * from livro where genero = 'Psicologia'");
+					?>
+				</div>
+			</div>
+			<!-- Todos -->
+			<div class="book-section">
+				<h3>Todos os Livros</h3>
+				<div class="book-container"> 
+					<?php
+					require "../listaLivros.php";
+
+					listaLivros("select * from livro");
+					?>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<div class = conteudo1>
-		<div class = titulo1>
-			<h2 style="color: #1d61bf";>Todos os livros</h2>
+	<!-- Rodapé -->
+	<footer>
+		<div class="container">
+			<div class="footer-center">
+				<p>Todos os direitos reservados</p>
+			</div>
 		</div>
-		<div class="todos-os-livros">
-			<?php
-			require_once '../config.php';
-			$sql = "select * from livro";
-			$result = $conn->query($sql);
-			while ($row = mysqli_fetch_assoc($result)) {
-				$id = $row["id_livro"];
-				$titulo = $row["titulo"];
-				$imagem = "http://".$_SERVER['HTTP_HOST'].'/LeituraFacil/ImagensLivros/'.$row["imagem"];
-				echo <<<HTML
-				<div class="book">
-					<img src="$imagem" alt="">
-					<h4>$titulo</h4>
-					<button class="btn-emprestimo">Empréstimo</button>
-				</div>
-				HTML;
-			}
-			?>
-		</div>
-		<button id="show-more" class = "botaoMostrar">Mostrar mais</button>
-	</div>
-
-	<div class="rodape">
-		<div class="logorodape">
-			<img src="imgPagLivros/logo.jpg" alt="logo do site">
-		</div>
-		<p style="font-size: 16px; text-align: left; margin-top: 170px;margin-left: 110px;" >blablablababalbalbal.</p>
-		<p style="font-size: 16px; text-align: left; margin-top: 20px;margin-left: 110px;" >blablkabkabbakbakbaka.</p>
-		<p style="font-size: 16px; text-align: left; margin-top: 20px;margin-left: 110px;" >blabldandndanadknkada.</p>
-		<p style="font-size: 16px; text-align: left; margin-top: 20px;margin-left: 110px;" >blabladnjndjkanjdnajkdna.</p>
-	</div>
+	</footer>
 </body>
 </html>

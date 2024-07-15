@@ -1,0 +1,226 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+/* Adicione uma classe de contêiner flexível */
+.content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+    padding: 20px;
+}
+
+/* Estilo para o formulário */
+.admin-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    margin-right: 20px; /* Espaçamento entre o formulário e a tabela */
+}
+
+.admin-content h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilo para a tabela de resultados */
+#resultadoTabela {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#resultadoTabela th, #resultadoTabela td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#resultadoTabela th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #1d61bf;
+    color: white;
+}
+
+#resultadoTabela tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#resultadoTabela tr:hover {
+    background-color: #ddd;
+}
+
+/* Adicione uma classe para a tabela para mantê-la flexível */
+.table-container {
+    flex: 2;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Barra de topo */
+.top-bar {
+    background-color: #1d61bf;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-links a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.admin-links a.active {
+    font-weight: bold;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+}
+
+.profile img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+
+
+/* Conteúdo principal */
+.content-wrapper {
+    margin-top: 60px;
+    padding: 20px;
+}
+
+.admin-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.admin-content h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-right: 20px;
+}
+
+.form-group:last-child {
+    margin-right: 0;
+}
+
+label {
+    margin-bottom: 10px;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    padding: 12px 20px;
+    background-color: #1d61bf;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0b264c;
+}
+
+/* Rodapé */
+footer {
+    background-color: #1d61bf;
+    color: #fff;
+    padding: 20px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-logo {
+    width: 100px;
+    margin-bottom: 10px;
+    margin-right: 100px;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 5px;
+}
+
+.footer-center {
+    text-align: center;
+}
+
+.footer-center p {
+    margin: 0;
+}
