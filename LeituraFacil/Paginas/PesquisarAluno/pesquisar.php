@@ -1,8 +1,11 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "4733105";
-$dbname = "biblioteca";
+
+require_once __DIR__ . '/../../config.php';
+
+$servername = DB_HOST;
+$username   = DB_USERNAME;
+$password   = DB_PASSWORD;
+$dbname     = DB_NAME;
 
 // Cria conexão
 $conn = new mysqli($servername, $username, $password, $dbname);
