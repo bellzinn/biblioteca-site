@@ -1,8 +1,9 @@
--- MariaDB dump 10.19-11.3.2-MariaDB, for Linux (x86_64)
+/*!999999- enable the sandbox mode */ 
+-- MariaDB dump 10.19-11.4.2-MariaDB, for Linux (x86_64)
 --
 -- Host: localhost    Database: biblioteca
 -- ------------------------------------------------------
--- Server version	11.3.2-MariaDB
+-- Server version	11.4.2-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -13,7 +14,7 @@
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+/*M!100616 SET @OLD_NOTE_VERBOSITY=@@NOTE_VERBOSITY, NOTE_VERBOSITY=0 */;
 
 --
 -- Table structure for table `editora`
@@ -26,7 +27,7 @@ CREATE TABLE `editora` (
   `id_editora` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id_editora`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +39,13 @@ LOCK TABLES `editora` WRITE;
 INSERT INTO `editora` VALUES
 (1,'Panini'),
 (2,'Objetiva'),
-(3,'LeYa Suma');
+(3,'LeYa Suma'),
+(4,'Companhia das Letras'),
+(5,'HarperCollins Brasil'),
+(6,'Novo Século'),
+(7,' Departamento de Cultura '),
+(8,'Rocco Jovens Leitores '),
+(9,'JBC');
 /*!40000 ALTER TABLE `editora` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -121,7 +128,7 @@ CREATE TABLE `livro` (
   PRIMARY KEY (`id_livro`),
   KEY `fk_livro_Editora1_idx` (`id_editora`),
   CONSTRAINT `fk_id_editora` FOREIGN KEY (`id_editora`) REFERENCES `editora` (`id_editora`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -131,13 +138,26 @@ CREATE TABLE `livro` (
 LOCK TABLES `livro` WRITE;
 /*!40000 ALTER TABLE `livro` DISABLE KEYS */;
 INSERT INTO `livro` VALUES
-(1,'Jujutsu Kaisen','Gege Akutani','Acão','Português',NULL,1,'http://dummyimage.com/144x100.png/dddddd/000000'),
-(2,'Ouran High School Host Club','Hatori Bisco','Romance','Português',NULL,1,'http://dummyimage.com/144x100.png/dddddd/000000'),
-(3,'Golden Kamuy','Noda Satoru','Ação','Português',NULL,1,'http://dummyimage.com/144x100.png/dddddd/000000'),
-(4,'A Coisa','Stephen King','Terror','Português',NULL,2,'http://dummyimage.com/144x100.png/dddddd/000000'),
-(5,'JoJo\'s Bizarre Adventure Part 4 - Diamond is Unbreakable','Araki Hirohiko','Acão','Português',NULL,1,'http://dummyimage.com/144x100.png/dddddd/000000'),
-(6,'One Piece','Oda Eiichiro','Aventura','Português',NULL,1,'http://dummyimage.com/144x100.png/dddddd/000000'),
-(7,'A Guerra Dos Tronos','George R.R Martin','Fantasia','Português',NULL,3,'http://dummyimage.com/144x100.png/dddddd/000000');
+(1,'Jujutsu Kaisen','Gege Akutani','Acão','Português',NULL,1,'jujutsu.jpg'),
+(2,'Ouran High School Host Club','Hatori Bisco','Romance','Português',NULL,1,'ouran.jpg'),
+(3,'Golden Kamuy','Noda Satoru','Ação','Português',NULL,1,'golden_kamuy.jpg'),
+(4,'A Coisa','Stephen King','Terror','Português',NULL,2,'it.jpg'),
+(5,'Diamond is Unbreakable','Araki Hirohiko','Acão','Português',NULL,1,'jojo4.jpg'),
+(6,'One Piece','Oda Eiichiro','Aventura','Português',NULL,1,'one_piece.jpg'),
+(7,'A Guerra Dos Tronos','George R.R Martin','Fantasia','Português',NULL,3,'got.jpg'),
+(8,'1984','George Orwell','Ficção','Português',NULL,4,'1984.jpg'),
+(9,'O Gene Egoísta','Richard Dawkins','Ciência','Português',NULL,4,'gene.jpg'),
+(10,'Cosmos','Carl Sagan','Ciência','Português',NULL,4,'cosmos.jpg'),
+(11,'O Homem e seus Símbolos','Carl Jung','Psicologia','Português',NULL,5,'homem.jpg'),
+(12,'A Arte da Guerra','Sun Tzu','Psicologia','Português',NULL,6,'guerra.jpg'),
+(13,'Coraline','Neil Gaiman','Terror','Português',NULL,8,'coraline.jpg'),
+(14,'Neon Genesis Evangelion','Yoshiyuki Sadamoto','Mecha','Português',NULL,9,'eva.jpg'),
+(15,'Berserk','Kentaro Miura','Ação','Português',NULL,1,'berserk.jpg'),
+(18,'Pensamento Computacional',NULL,'Lógica Computacional',NULL,NULL,1,'pcomputacional.jpg'),
+(19,'Estrutura de Dados',NULL,'Lógica Computacional',NULL,NULL,1,'estrutura.jpg'),
+(20,'Lógica de Programação',NULL,'Lógica Computacional',NULL,NULL,1,'logicap.jpg'),
+(21,'Arquitetura de Software',NULL,'Lógica Computacional',NULL,NULL,1,'arquitetura.jpg'),
+(22,'Algoritmos e Lógica',NULL,'Lógica Computacional',NULL,NULL,1,'algoritmos.jpg');
 /*!40000 ALTER TABLE `livro` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -174,7 +194,34 @@ INSERT INTO `usuario` VALUES
 (5,'pedro','pedro@gmail.com',NULL,'123',1);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+DROP VIEW IF EXISTS `lancamentos`;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY INVOKER VIEW `lancamentos` AS
+SELECT
+  livro.id_livro AS id_livro,
+  livro.titulo AS titulo,
+  livro.autor AS autor,
+  livro.genero AS genero,
+  livro.idioma AS idioma,
+  livro.situacao AS situacao,
+  livro.id_editora AS id_editora,
+  livro.imagem AS imagem
+FROM livro
+WHERE livro.id_livro >= 13 AND livro.id_livro <= 15;
+
+DROP VIEW IF EXISTS `sugestoes`;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY INVOKER VIEW `sugestoes` AS
+SELECT
+  livro.id_livro AS id_livro,
+  livro.titulo AS titulo,
+  livro.autor AS autor,
+  livro.genero AS genero,
+  livro.idioma AS idioma,
+  livro.situacao AS situacao,
+  livro.id_editora AS id_editora,
+  livro.imagem AS imagem
+FROM livro
+WHERE livro.id_livro >= 8 AND livro.id_livro <= 12;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
@@ -182,6 +229,4 @@ UNLOCK TABLES;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2024-06-02 16:52:25
+/*M!100616 SET NOTE_VERBOSITY=@OLD_NOTE_VERBOSITY */;

@@ -4,8 +4,12 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Biblioteca</title>
-	<link rel="stylesheet" href="assetsInicial/stylesInicial.css">
+	<link rel="stylesheet" href="assetsInicial/stylesinicial.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 <body>
 	<header>
@@ -18,7 +22,7 @@
 			<div class="search-box">
 				<input type="text" placeholder="O que você procura?">
 			</div>
-			<button id="contraste" class="btn-contraste">Alto Contraste</button>
+			<button id="dark" class="btn-dark">Night</button>
 		</div>
 		</div>
 	</header>
@@ -49,78 +53,108 @@
 		</ul>
 	</nav>
 
-	<script>
-		document.addEventListener('DOMContentLoaded', function() {
-			const prevButtons = document.querySelectorAll('.prev');
-			const nextButtons = document.querySelectorAll('.next');
-			function handleCarousel(event) {
-				const targetId = event.target.dataset.target;
-				const bookContainer = document.getElementById(targetId);
-				const scrollAmount = 220; 
-				if (event.target.classList.contains('prev')) {
-					bookContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-				} else {
-					bookContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-				}
-			}
-			prevButtons.forEach(button => button.addEventListener('click', handleCarousel));
-			nextButtons.forEach(button => button.addEventListener('click', handleCarousel));
-		});
+	
+<script>
 
-		document.addEventListener('DOMContentLoaded', function() {
-			if (localStorage.getItem('altoContraste') === 'true') {
-				document.body.classList.add('alto-contraste');
-			}
-			document.getElementById('contraste').addEventListener('click', function() {
-				document.body.classList.toggle('alto-contraste');
-				localStorage.setItem('altoContraste', document.body.classList.contains('alto-contraste'));
+$(document).ready(function(){
+			$(".book-link").click(function(e){
+				e.preventDefault(); 
+				var bookId = $(this).data('id'); 
+				var bookImg = $(this).data('img');
+				var bookTitle = $(this).data('title');
+				window.location.href = `../PaginaLivros/detalhesLivro.html?id=${bookId}&img=${encodeURIComponent(bookImg)}&title=${encodeURIComponent(bookTitle)}`;
 			});
 		});
-	</script>
 
-		<section class="destaques">
-			<div class="container">
-				<h2 style="color: #1d61bf;">Sugestões de Obras</h2>
-				<div class="book-carousel">
-					<div class="book-container">
-						<?php
-						require '../listaLivros.php';
+document.addEventListener('DOMContentLoaded', () => {
+  // Carrossel
+  const prevButtons = document.querySelectorAll('.prev');
+  const nextButtons = document.querySelectorAll('.next');
+  const scrollAmount = 220;
 
-						listaLivros("select * from sugestoes");
-						?>
-					</div>
-					<div class="carousel-navigation">
-						<button class="prev" data-target="sugestoes">❮</button>
-						<button class="next" data-target="sugestoes">❯</button>
-					</div>
-				</div>
-			</div>
-		</section>
+  function handleCarousel(event) {
+    const targetId = event.currentTarget.dataset.target;
+    const container = document.getElementById(targetId);
+    if (!container) return;
+
+    if (event.currentTarget.classList.contains('prev')) {
+      container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    } else {
+      container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  }
+
+  prevButtons.forEach(btn => btn.addEventListener('click', handleCarousel));
+  nextButtons.forEach(btn => btn.addEventListener('click', handleCarousel));
+
+  // Modo Dark
+if (localStorage.getItem('darkMode') === 'true') {
+  document.body.classList.add('dark-mode');
+}
+
+const darkModeBtn = document.getElementById('dark');
+if (darkModeBtn) {
+  darkModeBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+  });
+}
+
+});
+</script>
+
+
+		<section class="sugestoes">
+  			<div class="container-conteudo">
+   				 <h2 style="color: #1E40AF;">Sugestões de Obras</h2>
+   				 <div class="book-carousel">
+   			     	<div id="sugestoes" class="book-container" style="overflow-x: auto; scroll-behavior: smooth; white-space: nowrap;">
+        				<?php
+          				require '../listaLivros.php';
+          				listaLivros("select * from sugestoes");
+        				?>
+      				</div>
+      				<div class="carousel-navigation">
+        				<button class="prev" aria-label="Anterior" data-target="sugestoes">❮</button>
+        				<button class="next" aria-label="Próximo" data-target="sugestoes">❯</button>
+      			</div>
+    		</div>
+ 		 </div>
+	</section>
 
 		<section class="lancamentos">
-			<div class="container">
-				<h2 style="color: #1d61bf;">Lançamentos</h2>
-				<div class="book-carousel">
-					<div class="book-container">
-						<?php
-						require '../listaLivros.php';
+  			<div class="container-conteudo">
+   				 <h2 style="color: #1E40AF;">Lançamentos</h2>
+   				 <div class="book-carousel">
+   			     	<div id="lancamentos" class="book-container" style="overflow-x: auto; scroll-behavior: smooth; white-space: nowrap;">
+        				<?php
+          				require '../listaLivros.php';
+          				listaLivros("select * from livro");
+        				?>
+      				</div>
+      				<div class="carousel-navigation">
+        				<button class="prev" aria-label="Anterior" data-target="lancamentos">❮</button>
+        				<button class="next" aria-label="Próximo" data-target="lancamentos">❯</button>
+      			</div>
+    		</div>
+ 		 </div>
+	</section>
 
-						listaLivros("select * from lancamentos");
-						?>
-					</div>
-					<div class="carousel-navigation">
-						<button class="prev" data-target="lancamentos">❮</button>
-						<button class="next" data-target="lancamentos">❯</button>
-					</div>
+		<section class="depoimentos">
+			<div class= "container-conteudo">
+				<h2 style="color: #1E40AF; text-align: center;">Depoimentos dos usuários</h2>
+				<div class= "depoimento-conteudo">
+
 				</div>
 			</div>
+
 		</section>
 
 		<section class="recursos">
-			<div class="container">
-				<h2 style="color: #1d61bf; text-align: center;">Recursos</h2>
+			<div class="container-conteudo">
+				<h2 style="color: #1E40AF; text-align: center;">Recursos</h2>
 				<div class="opcoes">
-					<button class="btn-opcoes" style="font-size: 20px;">Perfil</button>
+					<button class="btn-opcoes" style="font-size: 20px;" onclick="location.href='../PerfilUsuario/perfilusuario.html'">Perfil</button>
 					<button class="btn-opcoes" style="font-size: 20px;">Historico</button>
 					<button class="btn-opcoes" style="font-size: 20px;">Acervo</button>
 				</div>
@@ -128,7 +162,7 @@
 		</section>
 
 		<section class="atendimento">
-			<div class="container">
+			<div class="container-conteudo">
 				<h2 style="color: #1d61bf; text-align: center;">Atendimento</h2>
 				<div class="opcoes">
 					<button class="btn-opcoes" style="font-size: 20px;">Elogios</button>
@@ -142,7 +176,7 @@
 		<section class="info">
 			<div class="container">
 				<h2 style="color: #1d61bf;">Informações</h2>
-				<p style="font-size: 18px; text-align: center;">O sistema de gerenciamento de empréstimos de livros em Java é uma solução abrangente projetada para modernizar e otimizar as operações de bibliotecas, este sistema oferece uma gama de opções tanto para admins da biblioteca como também para os usuarios dela.</p>
+				<p style="font-size: 18px; text-align: center;">ara modernizar e otimizar as operações de bibliotecas, este sistema oferece uma gama de opções tanto para admins da biblioteca como também para os usuarios dela.</p>
 			</div>
 		</section>
 	</main>

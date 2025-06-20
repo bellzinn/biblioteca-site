@@ -1,12 +1,12 @@
 /* Estilos globais */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #ffffff;
+    background-color: #F9FAFB;
     display: flex;
     flex-direction: column;
-    min-height: 50vh; 
+    min-height: 100vh; 
 }
 
 .container {
@@ -15,75 +15,95 @@ body {
     padding: 0 20px;
 }
 
-.btn-contraste {
+.container-conteudo {
+    margin-left: 120px;
+
+}
+
+.btn-dark {
     flex: none;
     margin-left: 20px;
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #ffffff;
-    color: #1d61bf;
+    background-color: #444343;
+    color: #ffffff;
     border-radius: 15px;
     cursor: pointer;
 }
 
-.btn-contraste:hover {
-    background-color: #1d61bf;
+.btn-dark:hover {
+    background-color: #111111;
     color: #ffffff;
 }
 
-/* Modo de Alto Contraste */
-body.alto-contraste {
-    background-color: #00141a;
-    color: white;
+/* Modo Dark */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
 }
 
-body.alto-contraste .library-content,
-body.alto-contraste .content-wrapper{
-    background-color: #00141a;
-    color: white;
+body.dark-mode .library-content,
+body.dark-mode .content-wrapper {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
 }
 
-body.alto-contraste .book-container,
-body.alto-contraste .book{
-    background-color: #326673;
-    color: white;
+body.dark-mode .book-container,
+body.dark-mode .book {
+    background-color: #2c2c2c;
+    color: #f0f0f0;
 }
 
-body.alto-contraste .book-carousel{
-    background-color: #004051;
-    color: white;
+body.dark-mode .book-carousel {
+    background-color: #1a1a1a;
+    color: #f0f0f0;
 }
 
-body.alto-contraste .book-section{
-    background-color: #004051;
-    color: white;
+body.dark-mode .book-section {
+    background-color: #1a1a1a;
+    color: #f0f0f0;
 }
 
-body.alto-contraste header,
-body.alto-contraste footer,
-body.alto-contraste nav.menulateral {
-    background-color: #004051;
+body.dark-mode header,
+body.dark-mode footer,
+body.dark-mode nav.menulateral {
+    background-color: #1f1f1f;
+    color: #e0e0e0;
 }
 
-body.alto-contraste .btn-contraste {
-    background-color: white;
-    color: #004051;
-    border-color: white;
+body.dark-mode .btn-contraste {
+    background-color: #333333;
+    color: #e0e0e0;
+    border-color: #333333;
 }
 
-body.alto-contraste .search-box input {
-    background-color: white;
-    color: #004051;
+body.dark-mode .search-box input {
+    background-color: #2b2b2b;
+    color: #ffffff;
+    border: 1px solid #555555;
 }
 
-body.alto-contraste .book-container .book a h4 {
-    color: white;
+body.dark-mode .book-container .book a h4 {
+    color: #ffffff;
 }
+
+body.dark-mode .btn-emprestimo,
+body.dark-mode .btn-emprestimo1 {
+    background-color: #3B82F6;
+    color: #ffffff;
+}
+
+body.dark-mode .btn-emprestimo:hover,
+body.dark-mode .btn-emprestimo1:hover {
+    background-color: #1e3a8a;
+}
+
 
 /* Cabeçalho */
 header {
-    background-color: #1d61bf;
+    background-color: #1E3A8A;
     padding: 20px 0;
+    margin-bottom: 30px;
 }
 
 header .container {
@@ -127,7 +147,7 @@ nav.menulateral{
     left: 0;
     width: 60px;
     height: 100%;
-    background-color: #1d61bf;
+    background-color: #1E3A8A;
     padding: 40px 0 40px 1%;
     box-shadow: 3px 0 0 #0b264c;
     z-index: 999;
@@ -198,6 +218,7 @@ section {
 
 .sobre {
     background-color: #ffffff;
+    margin-left: 80px;
     padding: 20px;
     text-align: center;
 }
@@ -207,16 +228,19 @@ section {
 
 /* Estilos dos Carroseis */
 .book-carousel {
-    margin-left: 60px;
+    max-width: 1530px ;
     position: relative;
+    margin-left: 60px;
     background-color: #e5e5e5;
     padding: 20px;
+    margin-bottom: 30px;
 }
 
 .book-container {
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
+    justify-content: space-around;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth; 
 }
@@ -225,18 +249,24 @@ section {
     display: none; 
 }
 
+.book a {
+    color: inherit;
+    text-decoration: none;
+}
+
 .book {
-    min-width: 200px;
-    max-width: 200px;
+    min-width: 150px;
+    max-width: 150px;
     flex: 0 0 auto;
     scroll-snap-align: start;
     padding: 10px;
-    background-color: white;
+    background-color: #E5E7EB;
     border-radius: 5px;
     margin-right: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 }
 
 .book img {
@@ -257,7 +287,7 @@ section {
 }
 
 .carousel-navigation button {
-    background-color: #1d61bf;
+    background-color: #3B82F6;
     color: white;
     border: none;
     border-radius: 100%;
@@ -284,7 +314,7 @@ section {
 
 .btn-emprestimo {
     padding: 5px 10px;
-    background-color: #1d61bf;
+    background-color: #3B82F6;
     color: white;
     border: none;
     cursor: pointer;
@@ -295,11 +325,19 @@ section {
 }
 
 
+.depoimento-conteudo{
+    margin-bottom: 60px;
+
+}
 
 /* Seções de Recursos e Atendimento */
+.recursos{
+    margin-top: 70px;
+    margin-bottom: 50px;
+}
+
 .recursos, .atendimento {
-    margin-left: 50px;
-    text-align: center;
+    text-align: center; 
 }
 
 .opcoes {
@@ -314,7 +352,7 @@ section {
     background-color: #e5e5e5;
     color: #1d61bf;
     border: none;
-    border-radius: 5px;
+    border-radius: 30px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-size: 16px; 
