@@ -104,6 +104,18 @@ if (darkModeBtn) {
 </script>
 
 
+		<section class="banner">
+    <div class="container-slider">
+        <button class="prev" onclick="mudarSlide(-1)">❮</button>
+        <div class="container-img">
+            <img class="slide" src="assetsinicial/githubLogo2.png" alt="seta">
+            <img class="slide" src="assetsinicial/githubLogo.png" alt="Banner GitHub bellzinn">
+        </div>
+        <button class="next" onclick="mudarSlide(1)">❯</button>
+    </div>
+</section>
+
+
 		<section class="sugestoes">
   			<div class="container-conteudo">
    				 <h2 style="color: #1E40AF;">Sugestões de Obras</h2>
@@ -140,9 +152,29 @@ if (darkModeBtn) {
  		 </div>
 	</section>
 
+		<section class="eventos">
+			<div class= "container-conteudo">
+				<h2 style="color: #1E40AF; text-align: center;">Noticias</h2>
+				<div class= "depoimento-conteudo">
+
+				</div>
+			</div>
+
+		</section>
+
 		<section class="depoimentos">
 			<div class= "container-conteudo">
-				<h2 style="color: #1E40AF; text-align: center;">Depoimentos dos usuários</h2>
+				<h2 style="color: #1E40AF; text-align: center;">Depoimentos dos leitores</h2>
+				<div class= "depoimento-conteudo">
+
+				</div>
+			</div>
+
+		</section>
+
+		<section class="eventos">
+			<div class= "container-conteudo">
+				<h2 style="color: #1E40AF; text-align: center;">Eventos</h2>
 				<div class= "depoimento-conteudo">
 
 				</div>
@@ -156,7 +188,7 @@ if (darkModeBtn) {
 				<div class="opcoes">
 					<button class="btn-opcoes" style="font-size: 20px;" onclick="location.href='../PerfilUsuario/perfilusuario.html'">Perfil</button>
 					<button class="btn-opcoes" style="font-size: 20px;">Historico</button>
-					<button class="btn-opcoes" style="font-size: 20px;">Acervo</button>
+					<button class="btn-opcoes" style="font-size: 20px;" onclick="location.href='../PaginaLivros/pagLivros.php'">Acervo</button>
 				</div>
 			</div>
 		</section>
@@ -174,9 +206,11 @@ if (darkModeBtn) {
 		</section>
 
 		<section class="info">
-			<div class="container">
+			<div class="container-info">
 				<h2 style="color: #1d61bf;">Informações</h2>
-				<p style="font-size: 18px; text-align: center;">ara modernizar e otimizar as operações de bibliotecas, este sistema oferece uma gama de opções tanto para admins da biblioteca como também para os usuarios dela.</p>
+				<p style="font-size: 18px; text-align: center;">Projeto em andamento de uma biblioteca online desenvolvido com HTML, 
+																CSS e JavaScript para o front-end, e PHP para conexão com banco de dados. 
+																Permite o cadastro, consulta e gerenciamento de livros de forma simples e eficiente..</p>
 			</div>
 		</section>
 	</main>
@@ -189,6 +223,30 @@ if (darkModeBtn) {
 		</div>
 	</footer>
 
-	<script src="assetsInicial/scriptsInicial.js"></script> 
+	
+	
+	<script>
+let slideIndex = 0;
+mostrarSlide(slideIndex);
+
+function mudarSlide(n) {
+    slideIndex += n;
+    mostrarSlide(slideIndex);
+}
+
+function mostrarSlide(n) {
+    let slides = document.getElementsByClassName("slide");
+    if (n >= slides.length) { slideIndex = 0; }
+    if (n < 0) { slideIndex = slides.length - 1; }
+
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+
+    slides[slideIndex].style.display = "block";
+}
+</script>
+
+
 	</body>
 </html>
